@@ -58,6 +58,7 @@ async def signup(request: Request, name: str = Form(), username: str = Form(), p
 
 # 登入邏輯
 @app.post("/signin")
+
 async def signin(request: Request, username: str = Form(), password: str = Form()):
     # 連接資料庫
     db = get_db_connection()
@@ -74,6 +75,10 @@ async def signin(request: Request, username: str = Form(), password: str = Form(
 
     # 登入成功，將用戶名保存至 session
     request.session["user"] = username
+    request.session["name"] = user[1]  # 用戶的姓名
+
+    print(request.session)  # 打印 session 內容，用以確認登入成功時可以把使用者的姓名紀錄在使用者狀態中，/member 的路由函式可以直接從 Session 取得登入者的姓名。
+
 
     cursor.close()
     db.close()
@@ -84,8 +89,9 @@ async def signin(request: Request, username: str = Form(), password: str = Form(
 @app.get("/member", response_class=HTMLResponse)
 async def member_page(request: Request):
     username = request.session.get("user")  # 從 session 獲得登入的 username
+    name = request.session.get("name")  # 從 session 獲得登入的 name 
     
-    if not username:
+    if not username or not name:
         return RedirectResponse(url="/", status_code=303)  # 若沒登入則跳回登入頁面
 
     # 連接資料庫
@@ -122,15 +128,15 @@ async def member_page(request: Request):
     })
 
 # 提交留言的路由
-@app.post("/submit_message")
-async def submit_message(request: Request, message: str = Form(...)):
+@app.post("/createMessage")  
+async def create_message(request: Request, message: str = Form(...)):
     username = request.session.get("user")  # 確認是否有登入
     if not username:
         return RedirectResponse(url="/", status_code=303)  # 若沒登入則跳回登入頁面
 
     # 檢查留言內容是否空白
     if not message.strip():
-        return RedirectResponse(url="/member", status_code=303)  # 留言內容不可為空
+        return RedirectResponse(url="/member", status_code=303)
 
     # 連接資料庫
     db = get_db_connection()
@@ -142,10 +148,10 @@ async def submit_message(request: Request, message: str = Form(...)):
     if result:
         name = result[0]
     else:
-        name = "匿名"  # 如果沒有找到對應的 name，可以給個預設值
+        name = "匿名"
 
-    # 插入留言到資料庫，包含 name 欄位
-    cursor.execute("INSERT INTO messages ( username, name, content) VALUES (%s, %s, %s)", ( username, name, message))
+    # 插入留言到資料庫
+    cursor.execute("INSERT INTO messages (username, name, content) VALUES (%s, %s, %s)", (username, name, message))
     db.commit()
 
     cursor.close()
@@ -154,8 +160,9 @@ async def submit_message(request: Request, message: str = Form(...)):
     return RedirectResponse(url="/member", status_code=303)
 
 
+
 # 刪除留言的路由
-@app.post("/delete_message")
+@app.post("/deleteMessage")
 async def delete_message(request: Request, id: int = Form(...)):  # 使用 Form 來接收 message_id
 
     # 確認 message_id 是整數型態
