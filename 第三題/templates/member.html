@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>會員中心</title>
+    <!-- 引入靜態 CSS 文件 -->
+    <link rel="stylesheet" href="/static/member.css?v=2" />
+  </head>
+  <body>
+    <div class="welcomePage">歡迎光臨，這是會員頁</div>
+    <div class="text">{{ name }}，歡迎登入系統</div>
+
+    <!-- 登出連結，點擊後會導向登入頁面 -->
+    <div class="sign-out"><a href="/signout">登出系統</a></div>
+  </body>
+</html>

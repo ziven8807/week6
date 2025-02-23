@@ -1,0 +1,152 @@
+/* 基本設定 */
+body {
+  margin: 0;
+}
+
+.welcomePage {
+  display: flex;
+  width: 100%;
+  height: 250px;
+  background-color: rgb(9, 71, 92);
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* 使文字置中 */
+  font-size: 40px;
+  color: white; /* 字改白色 */
+  font-weight: bold; /* 字改粗體 */
+}
+
+.text {
+  text-align: center; /* 使文字置中 */
+  font-size: 30px;
+  padding-top: 50px;
+}
+
+.sign-out {
+  text-align: center; /* 使文字置中 */
+  font-size: 25px;
+}
+
+.message-header {
+  text-align: center; /* 使文字置中 */
+  font-size: 30px;
+  padding-top: 50px;
+}
+
+.input-group-message {
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.input-group-message input {
+  width: 200px;
+  padding: 5px; /* 增大輸入框的高度 */
+  font-size: 16px; /* 增加字體大小 */
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+
+/* 使整個留言區域居中 */
+.message-list {
+  display: flex;
+  flex-direction: column; /* 垂直排列留言項目 */
+  align-items: center; /* 水平居中對齊 */
+  justify-content: flex-start; /* 留言內容頂端對齊 */
+  padding: 20px; /* 給留言區域一些內邊距 */
+  margin: 0 auto; /* 設置自動外邊距，使其水平方向居中 */
+  max-width: 800px; /* 設置最大寬度 */
+}
+
+/* 讓每條留言居中顯示 */
+.message-item {
+  width: 100%; /* 預設佔滿寬度，下面會調整寬度 */
+  max-width: 600px; /* 最大寬度設為 600px */
+  background-color: #f1f1f1; /* 背景顏色 */
+  padding: 15px; /* 內邊距 */
+  margin-bottom: 15px; /* 每條留言之間的間隔 */
+  border-radius: 8px; /* 圓角邊框 */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 設置陰影效果 */
+  text-align: center; /* 讓留言內容和名稱置中 */
+}
+
+/* 讓留言內容和留言者名稱顯示在同一行 */
+.message-content {
+  display: flex;
+  justify-content: center; /* 使內容和名稱水平方向居中 */
+  align-items: center; /* 使名稱和內容垂直居中 */
+  font-size: 18px; /* 設置字體大小 */
+  text-align: center; /* 文字居中 */
+}
+
+/* 留言者名稱和留言內容的樣式 */
+.message-content .username {
+  font-weight: bold; /* 使名稱顯示為粗體 */
+  margin-right: 10px; /* 在名稱和留言內容之間加入一些間距 */
+}
+
+.message-content .message {
+  font-size: 16px; /* 設置留言內容的字體大小 */
+  color: #333; /* 設置文字顏色 */
+}
+
+/* 設置刪除按鈕的樣式 */
+.delete-button {
+  background-color: red; /* 背景紅色 */
+  color: white; /* 文字顯示白色 */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 讓每條留言顯示在左右兩側 */
+.message-item {
+  width: 100%; /* 預設佔滿寬度，下面會調整寬度 */
+  max-width: 600px; /* 最大寬度設為 600px */
+  background-color: #f1f1f1; /* 背景顏色 */
+  padding: 15px; /* 內邊距 */
+  margin-bottom: 15px; /* 每條留言之間的間隔 */
+  border-radius: 8px; /* 圓角邊框 */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 設置陰影效果 */
+  display: flex; /* 使用 Flexbox 排列留言內容 */
+  justify-content: space-between; /* 將內容與刪除按鈕分開，留言左邊，刪除按鈕右邊 */
+  align-items: center; /* 讓留言內容與刪除按鈕垂直對齊 */
+}
+
+/* 留言內容 */
+.message-content {
+  display: flex;
+  align-items: center; /* 使名稱和內容垂直居中 */
+  font-size: 18px; /* 設置字體大小 */
+}
+
+/* 留言者名稱和留言內容的樣式 */
+.message-content .username {
+  font-weight: bold; /* 使名稱顯示為粗體 */
+  margin-right: 10px; /* 在名稱和留言內容之間加入一些間距 */
+}
+
+.message-content .message {
+  font-size: 16px; /* 設置留言內容的字體大小 */
+  color: #333; /* 設置文字顏色 */
+}
+
+/* 設置刪除按鈕 */
+.delete-button {
+  background-color: red; /* 背景紅色 */
+  color: white; /* 文字顯示白色 */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: darkred; /* 鼠標懸停時變色 */
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>會員中心</title>
+    <!-- 引入靜態 CSS 文件 -->
+    <link rel="stylesheet" href="/static/member.css?=v2" />
+  </head>
+  <body>
+    <div class="welcomePage">歡迎光臨，這是會員頁</div>
+    <div class="text">{{ name }}，歡迎登入系統</div>
+
+    <!-- 登出連結，點擊後會導向登入頁面 -->
+    <div class="sign-out"><a href="/signout">登出系統</a></div>
+
+    <hr />
+    <!-- 留言區域 -->
+    <div class="message-header">快來留言吧</div>
+
+    <form action="/submit_message" method="POST">
+      <!-- 留言輸入欄位 -->
+      <div class="input-group-message">
+        <label for="message">內容:</label>
+        <input
+          type="text"
+          name="message"
+          placeholder="請輸入留言..."
+          required
+        />
+      </div>
+      <div class="submit-button-container">
+        <button type="submit">送出</button>
+      </div>
+    </form>
+
+    <hr />
+    <div class="message-list">
+      {% for msg in messages %}
+      <div class="message-item">
+        <div class="message-content">
+          <span class="username">{{ msg[2] }}</span>：
+          <span class="message">{{ msg[3] }}</span>
+        </div>
+        {% if msg[2] == name %}
+        <!-- 只有留言者可以看到這個刪除按鈕 -->
+        <form action="/delete_message" method="POST">
+          <!-- 確保傳遞的是數字型的 id -->
+          <input type="hidden" name="id" value="{{ msg[0] }}" />
+          <!-- msg[0] 是 ID -->
+          <button type="submit" class="delete-button">x</button>
+        </form>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

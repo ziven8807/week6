@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>註冊與登入</title>
+    <link rel="stylesheet" href="/static/index.css" />
+  </head>
+  <body>
+    <!-- 註冊表單區域 -->
+    <div class="signup-container">
+      <div class="welcomePage">歡迎光臨，請註冊登入系統</div>
+
+      <form action="/signup" method="POST" id="signupForm">
+        <div class="signupString">註冊帳號</div>
+
+        <!-- 姓名輸入欄位 -->
+        <div class="input-group-name">
+          <label for="name">姓名</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <!-- 帳號輸入欄位 -->
+        <div class="input-group-username">
+          <label for="signup_username">帳號</label>
+          <input type="text" id="signup_username" name="username" required />
+        </div>
+
+        <!-- 密碼輸入欄位 -->
+        <div class="input-group-password">
+          <label for="signup_password">密碼</label>
+          <input
+            type="password"
+            id="signup_password"
+            name="password"
+            required
+          />
+        </div>
+
+        <!-- 註冊按鈕 -->
+        <div class="signup-button-container">
+          <button type="submit" class="signupButton">註冊</button>
+        </div>
+      </form>
+    </div>
+
+    <hr />
+
+    <!-- 登入表單區域 -->
+    <div class="signin-container">
+      <form action="/signin" method="POST" id="signinForm">
+        <div class="signinString">登入系統</div>
+
+        <!-- 帳號輸入欄位 -->
+        <div class="input-group-username">
+          <label for="signin_username">帳號</label>
+          <input type="text" id="signin_username" name="username" required />
+        </div>
+
+        <!-- 密碼輸入欄位 -->
+        <div class="input-group-password">
+          <label for="signin_password">密碼</label>
+          <input
+            type="password"
+            id="signin_password"
+            name="password"
+            required
+          />
+        </div>
+
+        <!-- 登入按鈕 -->
+        <div class="signin-button-container">
+          <button type="submit" class="signinButton">登入</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
