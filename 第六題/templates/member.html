@@ -18,7 +18,7 @@
     <!-- 留言區域 -->
     <div class="message-header">快來留言吧</div>
 
-    <form action="/submit_message" method="POST">
+    <form action="/createMessage" method="POST">
       <!-- 留言輸入欄位 -->
       <div class="input-group-message">
         <label for="message">內容:</label>
@@ -44,7 +44,7 @@
         </div>
         {% if msg[2] == name %}
         <!-- 只有留言者可以看到這個刪除按鈕 -->
-        <form action="/delete_message" method="POST">
+        <form action="/deleteMessage" method="POST">
           <!-- 確保傳遞的是數字型的 id -->
           <input type="hidden" name="id" value="{{ msg[0] }}" />
           <!-- msg[0] 是 ID -->
